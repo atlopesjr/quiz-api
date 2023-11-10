@@ -1,73 +1,68 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+## Descrição
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+API para uma aplicação de quiz.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
-
-## Description
-
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
-## Installation
+## Instalação
 
 ```bash
 $ npm install
 ```
 
-## Running the app
+## Executando aplicação
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
 $ npm run start:dev
-
-# production mode
-$ npm run start:prod
 ```
 
-## Test
+## Banco de dados
+
+O banco de dados utilizado é o MySQL, já hospedado na plataforma PlanetScale.
+As credenciais para conexão ao banco de dados estão no arquivo .env.
+Para uma conexão local, basta alterar o arquivo .env.
+
+## Dados
+
+Os dados inseridos inicialmente, estão apresentados na query abaixo:
 
 ```bash
-# unit tests
-$ npm run test
+INSERT INTO book (description) VALUES ('Português');
+INSERT INTO book (description) VALUES ('Inglês');
+INSERT INTO book (description) VALUES ('Espanhhol');
 
-# e2e tests
-$ npm run test:e2e
+INSERT INTO grade (description) VALUES ('1 Serie');
+INSERT INTO grade (description) VALUES ('2 Serie');
+INSERT INTO grade (description) VALUES ('3 Serie');
+INSERT INTO grade (description) VALUES ('4 Serie');
+INSERT INTO grade (description) VALUES ('5 Serie');
 
-# test coverage
-$ npm run test:cov
+INSERT INTO task (question, grade_id, book_id) VALUES ('O que significa a sigla CPU?',1,1);
+INSERT INTO task (question, grade_id, book_id) VALUES ('Qual das seguintes empresas é conhecida por seus dispositivos móveis, como o iPhone e o iPad?',1,1);
+INSERT INTO task (question, grade_id, book_id) VALUES ('O que é um firewall em relação à segurança cibernética?',1,1);
+INSERT INTO task (question, grade_id, book_id) VALUES ('O que é um loop em programação?',1,1);
+INSERT INTO task (question, grade_id, book_id) VALUES ('O que significa a sigla HTML em termos de programação para a web?',1,1);
+
+INSERT INTO answer (description, is_correct, task_id) VALUES ('Central Processing Unit',true,1);
+INSERT INTO answer (description, is_correct, task_id) VALUES ('Computer Processing Unit',false,1);
+INSERT INTO answer (description, is_correct, task_id) VALUES ('Core Processing Unit',false,1);
+INSERT INTO answer (description, is_correct, task_id) VALUES ('Cabeça Pensante Unilateral',false,1);
+
+INSERT INTO answer (description, is_correct, task_id) VALUES ('Apple',true,2);
+INSERT INTO answer (description, is_correct, task_id) VALUES ('Samsung',false,2);
+INSERT INTO answer (description, is_correct, task_id) VALUES ('Microsoft',false,2);
+INSERT INTO answer (description, is_correct, task_id) VALUES ('Nokia',false,2);
+
+INSERT INTO answer (description, is_correct, task_id) VALUES ('Uma barreira de segurança que monitora e controla o tráfego de rede.',true,3);
+INSERT INTO answer (description, is_correct, task_id) VALUES ('Um dispositivo que protege contra sobrecargas de energia.',false,3);
+INSERT INTO answer (description, is_correct, task_id) VALUES ('Um programa que verifica e remove vírus de um computador.',false,3);
+INSERT INTO answer (description, is_correct, task_id) VALUES ('Um goleiro profissional.',false,3);
+
+INSERT INTO answer (description, is_correct, task_id) VALUES ('Uma sequência de instruções que é executada repetidamente.',true,4);
+INSERT INTO answer (description, is_correct, task_id) VALUES ('Um erro de sintaxe no código.',false,4);
+INSERT INTO answer (description, is_correct, task_id) VALUES ('Uma função que retorna um valor específico.',false,4);
+INSERT INTO answer (description, is_correct, task_id) VALUES ('Resetar o computador.',false,4);
+
+INSERT INTO answer (description, is_correct, task_id) VALUES ('HyperText Markup Language',true,5);
+INSERT INTO answer (description, is_correct, task_id) VALUES ('Home Tool Markup Language',false,5);
+INSERT INTO answer (description, is_correct, task_id) VALUES ('Hyperlink and Text Markup Language',false,5);
+INSERT INTO answer (description, is_correct, task_id) VALUES ('HyperV and Text Markup Language',false,5);
 ```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
